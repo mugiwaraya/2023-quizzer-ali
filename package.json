@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "setup": "concurrently \"cd backend && npm i\" \"cd team-client && npm i\" \"cd quizmaster-client && npm i\" \"cd scoreboard-client && npm i\"",
+    "seed": "cd backend && npm run seed",
+    "dev:backend": "concurrently \"cd backend && npm run dev\"",
+    "dev:team": "concurrently \"cd backend && npm run dev\" \"cd team-client && npm i && npm start\"",
+    "dev:scoreboard": "concurrently \"cd backend && npm run dev\" \"cd scoreboard-client && npm start\"",
+    "dev:quizmaster": "concurrently \"cd backend && npm run dev\" \"cd quizmaster-client && npm start\"",
+    "update:all": "concurrently \"cd backend && npm update\" \"cd quizmaster-client && npm update\" \"cd scoreboard-client && npm update\" \"cd team-client && npm update\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

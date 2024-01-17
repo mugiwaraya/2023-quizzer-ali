@@ -1,0 +1,208 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizmaster Test Client</title>
+
+    <style>
+      html {
+        background-color: #000;
+        color: white;
+      }
+      body > div {
+        border: 1px solid blue;
+        margin: 20px 0;
+        padding: 10px;
+      }
+      body > div > div {
+        border: 1px solid red;
+        margin: 20px 0;
+        padding: 10px;
+      }
+      td {
+        padding-right: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Quizmaster Test Client</h1>
+
+    <div>
+      <h2>1. Start Quiz</h2>
+      <button type="button" id="newQuizButton">New Quiz</button>
+      <table>
+        <tr>
+          <td>loading</td>
+          <td id="newQuizLoading"></td>
+        </tr>
+        <tr>
+          <td>data</td>
+          <td id="newQuizData" style="color: green"></td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td id="newQuizError" style="color: red"></td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <h2>2. Approve Join Requests</h2>
+      <table>
+        <tr>
+          <td>loading</td>
+          <td id="approveJoinRequestLoading"></td>
+        </tr>
+        <tr>
+          <td>data</td>
+          <td id="approveJoinRequestData" style="color: green"></td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td id="approveJoinRequestError" style="color: red"></td>
+        </tr>
+      </table>
+      <h3>Teams</h3>
+      <table>
+        <thead>
+          <tr style="font-weight: bold">
+            <td>team</td>
+            <td>action</td>
+          </tr>
+        </thead>
+        <tbody id="joinedTeamsTable"></tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>3. Select question categories</h2>
+
+      <!-- <button id="fetchCategoriesButton" type="button">fetch categories</button> -->
+      <table>
+        <tr>
+          <td>loading</td>
+          <td id="categoriesLoading"></td>
+        </tr>
+        <tr>
+          <td>data</td>
+          <td>
+            <div id="categoriesList"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td id="categoriesError" style="color: red"></td>
+        </tr>
+      </table>
+
+      <button id="submitCategoriesButton" type="button" style="display: none">submit selected categories</button>
+    </div>
+
+    <div>
+      <h2>4. Select question</h2>
+      <button id="fetchQuestionsButton" type="button">fetch questions</button>
+      <table>
+        <tr>
+          <td>loading</td>
+          <td id="questionsLoading"></td>
+        </tr>
+        <tr>
+          <td>data</td>
+          <td>
+            <select id="questionsData" type="select">
+              <option selected disabled>Select question</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td id="questionsError" style="color: red"></td>
+        </tr>
+      </table>
+      <button id="submitQuestionButton" type="button" style="display: none">submit question</button>
+    </div>
+
+    <div>
+      <h2>5. Assess answers</h2>
+      <table>
+        <tr>
+          <td>loading</td>
+          <td id="answersLoading"></td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td id="answersError"></td>
+        </tr>
+        <tr>
+          <td>correct answer</td>
+          <td id="correctAnswer"></td>
+        </tr>
+      </table>
+      <table>
+        <thead>
+          <tr style="font-weight: bold">
+            <td>teamId</td>
+            <td>answer</td>
+            <td>action</td>
+          </tr>
+        </thead>
+        <tbody id="answersTable"></tbody>
+      </table>
+
+      <button id="closeQuestionButton" type="button">close question</button>
+    </div>
+
+    <div>
+      <h2>6. Round</h2>
+      <table>
+        <tr>
+          <td>loading</td>
+          <td id="endRoundLoading"></td>
+        </tr>
+        <tr>
+          <td>data</td>
+          <td id="endRoundData"></td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td id="endRoundError"></td>
+        </tr>
+      </table>
+      <button id="endRoundButton" type="button">end round</button>
+    </div>
+
+    <div>
+      <h2>7. Quiz</h2>
+      <table>
+        <tr>
+          <td>loading</td>
+          <td id="endQuizLoading"></td>
+        </tr>
+        <tr>
+          <td>data</td>
+          <td id="endQuizData"></td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td id="endQuizError"></td>
+        </tr>
+      </table>
+      <button id="endQuizButton" type="button">end quiz</button>
+    </div>
+
+    <div>
+      <h2>websocket messages</h2>
+      <ul id="wsMessages"></ul>
+    </div>
+
+    <script
+      src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+      integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript" src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "quizzer-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --trace-warnings src/server.js",
+    "seed": "node --require dotenv/config --eval 'require(\"./src/utils/seed.js\").main()'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iek.dev",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.1.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.9",
+    "nanoid": "^3.1.30",
+    "socket.io": "^4.3.1",
+    "ws": "^8.2.3"
+  },
+  "engines": {
+    "node": "21.6.0"
+  }
+}

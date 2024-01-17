@@ -1,0 +1,38 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('quizzer')
+db.quizzes.drop()
+
+const subDoc = {
+  name: 'subDoc',
+}
+const subDoc2 = {
+  name: 'subDoc2',
+}
+
+const doc = {
+  _id: 'test',
+  subDocs: [subDoc],
+}
+
+db.quizzes.insertOne(doc)
+db.quizzes.findOneAndUpdate({
+  _id: 'test',
+  'subDocs.name': {
+    $ne: 'subDoc2'
+  }
+},
+{
+  $push: {
+    subDocs: subDoc2
+  }
+},
+{
+  returnNewDocument: true
+})
+
+// db.quizzes.findOne({_id: 'test'}, {_id: 0, subDocs: 1})
